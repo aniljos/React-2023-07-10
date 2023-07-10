@@ -30,6 +30,21 @@
          // <h3><p>This is a inner element</p></h3> using JSX
         ReactDOM.createRoot(document.getElementById("app3"))
                                         .render(<h3><p>This is a inner element</p></h3>);
+        
+        //Components: function/class
+        function MyComponent(){
+            // return the view(JSX)
+            return (
+                <div>
+                    <h3>React Component</h3>
+                    <p>This is a function component</p>    
+                </div>
+
+            );
+        }
+        ReactDOM.createRoot(document.getElementById("app4")).render(<MyComponent/>);
+
+        
 
     </script>
 </body>
