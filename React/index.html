@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.js" integrity="sha512-/1uYu3K5HmOTNdhaOt6Rh7qQgLk/zn0kfw4nqNtqbpACxAx2tKp+lXJ4tnx3zn0vMq4n97+1eKI0vfdU0x+NHg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <h3>React Application</h3>
+    <div id="app1"></div>
+    <div id="app2"></div>
+    <div id="app3"></div>
+    <div id="app4"></div>
+
+    <script type="text/babel">
+
+        // Render some html snippet inside the div with id="app1" using React
+        // <p>This is a React Element</p>
+        const element1 = React.createElement("p", null, "This is a React Element");
+        ReactDOM.createRoot(document.getElementById("app1")).render(element1);
+
+        // <h3><p>This is a inner element</p></h3>
+        const element2 = React.createElement("h3", null, 
+                                        React.createElement("p", null, "This is a inner element"));
+        ReactDOM.createRoot(document.getElementById("app2")).render(element2);
+
+         // <h3><p>This is a inner element</p></h3> using JSX
+        ReactDOM.createRoot(document.getElementById("app3"))
+                                        .render(<h3><p>This is a inner element</p></h3>);
+
+    </script>
+</body>
+</html>
