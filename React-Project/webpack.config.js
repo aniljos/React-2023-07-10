@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   output: {
-    path: path.join(__dirname, "/output"), // the bundle output path
+    path: path.join(__dirname, "/dist"), // the bundle output path
     filename: "bundle.[chunkhash].js", // the name of the bundle
   },
   plugins: [
