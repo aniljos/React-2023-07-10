@@ -1,4 +1,4 @@
-import {JSX} from 'react';
+import {JSX, MouseEvent} from 'react';
 import './Message.css';
 
 type MessageProps= {
@@ -9,7 +9,7 @@ type MessageProps= {
 // <Message title="" text=""/>
 export function Message(props: MessageProps): JSX.Element{
 
-    function handleEvent(evt: any){
+    function handleEvent(evt: MouseEvent<HTMLElement>){
         console.log("close button clicked", evt);
     }
 
