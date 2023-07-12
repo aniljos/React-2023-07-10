@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Hello from './components/Hello';
+import Counter from './components/Counter';
 
 function App() {
   return (
@@ -21,8 +22,11 @@ function App() {
         </a>
       </header>
       <section>
-        <Hello />
-       
+
+        {/* <Hello /> */}
+
+        <Counter initValue={0}/>
+        <Counter initValue={10}/>       
       </section>
     </div>
   );

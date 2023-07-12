@@ -4,13 +4,21 @@ import './Message.css';
 type MessageProps= {
     title?: string;
     text?: string;
+    onClose?: () => void
 }
+
+
 
 // <Message title="" text=""/>
 export function Message(props: MessageProps): JSX.Element{
 
-    function handleEvent(evt: MouseEvent<HTMLElement>){
+    function handleEvent(evt: any){
         console.log("close button clicked", evt);
+
+        if(props.onClose){
+            props.onClose();
+        }
+        
     }
 
     return (
@@ -22,7 +30,7 @@ export function Message(props: MessageProps): JSX.Element{
     )
 }
 
-//export default Message;
+export default Message
 
 
 
