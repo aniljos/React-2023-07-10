@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Hello from './components/Hello';
 import Counter from './components/Counter';
+import ListProducts from './components/ListProducts';
 
 function App() {
   return (
@@ -25,8 +26,10 @@ function App() {
 
         {/* <Hello /> */}
 
-        <Counter initValue={0}/>
-        <Counter initValue={10}/>       
+        {/* <Counter initValue={0}/>
+        <Counter initValue={10}/>        */}
+
+        <ListProducts/>
       </section>
     </div>
   );
