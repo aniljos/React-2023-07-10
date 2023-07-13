@@ -1,0 +1,20 @@
+.products{
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    margin: 7px;
+}
+
+.product{
+
+    background-color: cadetblue;
+    border-radius: 5px;
+    border-color: slateblue;
+    border-width: 2px;
+
+    height: 200px;
+    width: 250px;
+    margin: 7px;
+    padding: 7px;
+}
+

@@ -1,6 +1,7 @@
 import React, {JSX, useEffect, useState} from 'react';
 import axios from 'axios';
 import { Product } from '../models/Product';
+import './ListProducts.css'
 
 function ListProducts(): JSX.Element{
 
@@ -22,7 +23,7 @@ function ListProducts(): JSX.Element{
     function fetchProducts(){
 
         axios
-            .get("http://localhost:9000/products")
+            .get<Product[]>("http://localhost:9000/products")
             .then(function(resp){
 
                 console.log("success", resp)
@@ -36,12 +37,16 @@ function ListProducts(): JSX.Element{
         <div>
             <h4>List Products</h4>
 
-            <div>
+            <div className='products'>
                 {products.map((item: Product, index) => {
                     return (
-                        <div>
-                            <p>Id: {item.id}</p>
-                            <p>Name: {item.name}</p>
+                        <div className='product'>
+                            <p>
+                                <img src={"http://localhost:9000" + item.imageUrl} height={50} width={50}/>
+                            </p>
+                            <p>{item.name}</p>
+                            <p>{item.price}</p>
+                            <p>{item.description}</p>
                        </div>
                     )
                 })}
