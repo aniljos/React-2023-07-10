@@ -1,4 +1,4 @@
-import React, {ChangeEvent, JSX, useState, useRef} from 'react';
+import React, {ChangeEvent, JSX, useState, useRef, useEffect} from 'react';
 
 type CounterProps = {
     initValue: number;
@@ -11,8 +11,13 @@ export default function Counter(props: CounterProps): JSX.Element{
     const [counter, setCounter] = useState(initValue);
     const inputRef = useRef<HTMLInputElement>(null); // => return an object {current: (ref to the input)}
 
+    useEffect(() => {
+        console.log("useEffect counter", counter);
+    }, [counter])
+
     function inc(){
         setCounter(counter + 1);
+        //console.log("counter", counter);
     }
     function decr(){
         setCounter(counter - 1);
