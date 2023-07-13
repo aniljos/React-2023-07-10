@@ -4,34 +4,54 @@ import './App.css';
 import Hello from './components/Hello';
 import Counter from './components/Counter';
 import ListProducts from './components/ListProducts';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
+import {routes} from './routes/routes';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <section>
+    <Router>
+      <div className='container-fluid App'>
+        <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#">React</a>
+            <ul className="nav">
 
-        {/* <Hello /> */}
+                {routes.map(item => {
+                  return (
+                    <li key={item.path} className="nav-item">
+                      <Link className="nav-link" to={item.path}>{item.title}</Link>
+                    </li>
+                  )
+                })}
+                {/* <li className="nav-item">
+                  <Link className="nav-link" to="/">Home</Link>
+                </li>
+                
+                <li className="nav-item">
+                  <Link className="nav-link" to="/products">Products</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to='/login'>Login</Link>
+                </li> */}
+              </ul>
+          </div>
+        </nav>    
+        <section>
+            <Routes>
+              {/* <Route path='/' element={<Hello/>} />
+              <Route path='/counter' element={<Counter initValue={5}/>} />
+              <Route path='/products' element={<ListProducts/>} /> */}
 
-        {/* <Counter initValue={0}/>
-        <Counter initValue={10}/>        */}
-
-        <ListProducts/>
-      </section>
-    </div>
+              {routes.map(item => {
+                return (
+                  <Route key={item.path} path={item.path} element={<item.component {...item.props} />}/>
+                )
+              })}
+            </Routes>
+        </section>
+      </div>
+    </Router>
   );
 }
 
