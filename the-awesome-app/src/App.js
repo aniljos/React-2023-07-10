@@ -17,7 +17,7 @@ function App() {
             <a className="navbar-brand" href="#">React</a>
             <ul className="nav">
 
-                {routes.map(item => {
+                {routes.filter(item => item.isOnMainMenu).map(item => {
                   return (
                     <li key={item.path} className="nav-item">
                       <Link className="nav-link" to={item.path}>{item.title}</Link>

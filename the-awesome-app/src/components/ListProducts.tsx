@@ -2,17 +2,25 @@ import React, { JSX, useEffect, useState } from "react";
 import axios from "axios";
 import { Product } from "../models/Product";
 import "./ListProducts.css";
+import {useNavigate} from 'react-router-dom';
 
 const baseUrl = "http://localhost:9000";
 
 function ListProducts(): JSX.Element {
+
   const [products, setProducts] = useState<Product[]>([]);
+  const navigate = useNavigate();
 
   // useEffect(callback, [list of dependencies])
   //useEffect will be invoked only once(as soon as the component is mounted)
   useEffect(() => {
-    console.log("useEffect");
+    console.log("useEffect mounted");
     fetchProducts();
+
+    //invoked only once(as soon as the component is unmounted)
+    return () => {
+      console.log("useEffect unmounted");
+    }
   }, []);
 
   // useEffect(() => {
@@ -54,6 +62,12 @@ function ListProducts(): JSX.Element {
       alert("Failed to delete " + product.name);
     }
   }
+
+  function editProduct(product: Product){
+    navigate("/products/" + product.id);
+  }
+
+
   return (
     <div>
       <h4>List Products</h4>
@@ -69,7 +83,7 @@ function ListProducts(): JSX.Element {
               <p>{item.price}</p>
               <p>{item.description}</p>
               <div>
-                <button onClick={() => {}}>Edit</button> &nbsp;
+                <button onClick={() => {editProduct(item)}}>Edit</button> &nbsp;
                 <button
                   onClick={() => {
                     deleteProduct(item);

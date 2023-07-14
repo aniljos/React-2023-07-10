@@ -2,6 +2,7 @@ import {JSX} from 'react';
 import Hello from '../components/Hello';
 import Counter from '../components/Counter';
 import ListProducts from '../components/ListProducts';
+import EditProduct from '../components/EditProduct';
 
 type Route={
 
@@ -9,7 +10,8 @@ type Route={
     component: (props: any)=> JSX.Element,
     title?: string,
     isSecure?: boolean,
-    props?: any
+    props?: any,
+    isOnMainMenu?: boolean
 }
 
 
@@ -17,18 +19,26 @@ export const routes: Route[] = [
     {
         path: "/",
         component: Hello,
-        title: "Home"
+        title: "Home",
+        isOnMainMenu: true
     },
     {
         path: "/counter",
         component: Counter,
         title: "Counter",
-        props: {initValue: 5}
+        props: {initValue: 5},
+        isOnMainMenu: true
     },
     {
         path: "/products",
         component: ListProducts,
-        title: "Products"
+        title: "Products",
+        isOnMainMenu: true
+    },
+    {
+        path: "/products/:id",
+        component: EditProduct,
+        
     }
 
 ]
