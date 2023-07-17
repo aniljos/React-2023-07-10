@@ -1,4 +1,5 @@
 import React, {ChangeEvent, JSX, useState, useRef, useEffect} from 'react';
+import { useTitle } from '../hooks/useTitle';
 
 type CounterProps = {
     initValue: number;
@@ -10,7 +11,8 @@ export default function Counter(props: CounterProps): JSX.Element{
     let {initValue} = props;
     const [counter, setCounter] = useState(initValue);
     const inputRef = useRef<HTMLInputElement>(null); // => return an object {current: (ref to the input)}
-
+    useTitle("Counter");
+    
     useEffect(() => {
         console.log("useEffect counter", counter);
     }, [counter])

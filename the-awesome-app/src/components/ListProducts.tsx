@@ -4,6 +4,7 @@ import { Product } from "../models/Product";
 import "./ListProducts.css";
 import { useNavigate } from 'react-router-dom';
 import ProductView from "./ProductView";
+import { useTitle } from "../hooks/useTitle";
 
 const baseUrl = "http://localhost:9000";
 
@@ -12,16 +13,20 @@ function ListProducts(): JSX.Element {
   const [isMessageVisible, setMessageVisible] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
+  useTitle("ListProducts");
+  
 
   // useEffect(callback, [list of dependencies])
   //useEffect will be invoked only once(as soon as the component is mounted)
   useEffect(() => {
     console.log("useEffect mounted");
     fetchProducts();
+    
 
     //invoked only once(as soon as the component is unmounted)
     return () => {
       console.log("useEffect unmounted");
+      
     }
   }, []);
 
@@ -31,7 +36,8 @@ function ListProducts(): JSX.Element {
   // }, [products])
 
   function fetchProducts() {
-    axios.get<Product[]>(baseUrl + "/products").then(
+    axios.get<Product[]>(baseUrl + "/products")
+      .then(
       function (resp) {
         console.log("success", resp);
         setProducts(resp.data);
