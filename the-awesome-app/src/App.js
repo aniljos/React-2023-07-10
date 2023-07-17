@@ -11,7 +11,7 @@ import {routes} from './routes/routes';
 function App() {
   return (
     <Router>
-      <div className='container-fluid App'>
+      <div className='container-fluid'>
         <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">React</a>

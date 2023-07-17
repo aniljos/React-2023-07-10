@@ -3,11 +3,12 @@ import Hello from '../components/Hello';
 import Counter from '../components/Counter';
 import ListProducts from '../components/ListProducts';
 import EditProduct from '../components/EditProduct';
+import Login from '../components/Login/Login';
 
 type Route={
 
     path: string,
-    component: (props: any)=> JSX.Element,
+    component: (props: any)=> JSX.Element | any,
     title?: string,
     isSecure?: boolean,
     props?: any,
@@ -39,6 +40,12 @@ export const routes: Route[] = [
         path: "/products/:id",
         component: EditProduct,
         
-    }
+    },
+    {
+        path: "/login",
+        component: Login,
+        title: "Login",
+        isOnMainMenu: true
+    },
 
 ]
