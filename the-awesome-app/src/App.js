@@ -5,8 +5,9 @@ import Hello from './components/Hello';
 import Counter from './components/Counter';
 import ListProducts from './components/ListProducts';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
-import {routes} from './routes/routes';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { routes } from './routes/routes';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -17,14 +18,14 @@ function App() {
             <a className="navbar-brand" href="#">React</a>
             <ul className="nav">
 
-                {routes.filter(item => item.isOnMainMenu).map(item => {
-                  return (
-                    <li key={item.path} className="nav-item">
-                      <Link className="nav-link" to={item.path}>{item.title}</Link>
-                    </li>
-                  )
-                })}
-                {/* <li className="nav-item">
+              {routes.filter(item => item.isOnMainMenu).map(item => {
+                return (
+                  <li key={item.path} className="nav-item">
+                    <Link className="nav-link" to={item.path}>{item.title}</Link>
+                  </li>
+                )
+              })}
+              {/* <li className="nav-item">
                   <Link className="nav-link" to="/">Home</Link>
                 </li>
                 
@@ -34,21 +35,31 @@ function App() {
                 <li className="nav-item">
                   <Link className="nav-link" to='/login'>Login</Link>
                 </li> */}
-              </ul>
+            </ul>
           </div>
-        </nav>    
+        </nav>
         <section>
-            <Routes>
-              {/* <Route path='/' element={<Hello/>} />
+          <Routes>
+            {/* <Route path='/' element={<Hello/>} />
               <Route path='/counter' element={<Counter initValue={5}/>} />
               <Route path='/products' element={<ListProducts/>} /> */}
 
-              {routes.map(item => {
+            {routes.map(item => {
+
+              if (item.isProtected) {
                 return (
-                  <Route key={item.path} path={item.path} element={<item.component {...item.props} />}/>
+                  <React.Fragment>
+                    <ProtectedRoute key={item.path} path={item.path} element={<item.component {...item.props} />} />
+                  </React.Fragment>
                 )
-              })}
-            </Routes>
+              }
+              else {
+                return (
+                  <Route key={item.path} path={item.path} element={<item.component {...item.props} />} />
+                )
+              }
+            })}
+          </Routes>
         </section>
       </div>
     </Router>

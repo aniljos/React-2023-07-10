@@ -12,7 +12,8 @@ type Route={
     title?: string,
     isSecure?: boolean,
     props?: any,
-    isOnMainMenu?: boolean
+    isOnMainMenu?: boolean,
+    isProtected?: boolean
 }
 
 
@@ -34,7 +35,8 @@ export const routes: Route[] = [
         path: "/products",
         component: ListProducts,
         title: "Products",
-        isOnMainMenu: true
+        isOnMainMenu: true,
+        isProtected: true
     },
     {
         path: "/products/:id",
