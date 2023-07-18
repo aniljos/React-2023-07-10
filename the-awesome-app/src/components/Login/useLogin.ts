@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
+import { AppDispatch } from '../../redux/store';
 
 export function useLogin(){
 
@@ -9,7 +10,7 @@ export function useLogin(){
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
 
     async function login(){
 

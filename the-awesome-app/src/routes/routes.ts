@@ -4,6 +4,8 @@ import Counter from '../components/Counter';
 import ListProducts from '../components/ListProducts';
 import EditProduct from '../components/EditProduct';
 import Login from '../components/Login/Login';
+import GadgetStore from '../components/GadgetStore';
+import ViewCart from '../components/ViewCart';
 
 type Route={
 
@@ -47,6 +49,18 @@ export const routes: Route[] = [
         path: "/login",
         component: Login,
         title: "Login",
+        isOnMainMenu: true
+    },
+    {
+        path: "/gadgets",
+        component: GadgetStore,
+        title: "Gadgets",
+        isOnMainMenu: true
+    },
+    {
+        path: "/cart",
+        component: ViewCart,
+        title: "View Cart",
         isOnMainMenu: true
     },
 

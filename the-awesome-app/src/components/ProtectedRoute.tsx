@@ -1,6 +1,7 @@
 import {JSX} from 'react';
 import {useSelector} from 'react-redux';
 import { Navigate, Route } from 'react-router-dom';
+import { AppState } from '../redux/store';
 
 type ProtectedRouteProps = {
 
@@ -9,7 +10,7 @@ type ProtectedRouteProps = {
 
 export default function ProtectedRoute(props: ProtectedRouteProps){
 
-    const auth = useSelector((state: any) => state.auth);
+    const auth = useSelector((state: AppState) => state.auth);
 
     if(auth.isAuthenticated){
         return props.children;
