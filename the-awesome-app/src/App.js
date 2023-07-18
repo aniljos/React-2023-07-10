@@ -49,7 +49,8 @@ function App() {
               if (item.isProtected) {
                 return (
                   <React.Fragment>
-                    <ProtectedRoute key={item.path} path={item.path} element={<item.component {...item.props} />} />
+                    <Route key={item.path} path={item.path} 
+                            element={<ProtectedRoute><item.component {...item.props} /> </ProtectedRoute>} />
                   </React.Fragment>
                 )
               }
