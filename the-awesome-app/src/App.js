@@ -48,10 +48,10 @@ function App() {
 
               if (item.isProtected) {
                 return (
-                  <React.Fragment>
+                 
                     <Route key={item.path} path={item.path} 
                             element={<ProtectedRoute><item.component {...item.props} /> </ProtectedRoute>} />
-                  </React.Fragment>
+                  
                 )
               }
               else {

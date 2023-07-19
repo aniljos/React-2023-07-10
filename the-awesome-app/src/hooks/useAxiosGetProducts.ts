@@ -13,7 +13,7 @@ export function useAxiosGetProducts(){
 
         return () => {
             if(source){
-              //  source.cancel()
+                source.cancel()
             }
         }
 

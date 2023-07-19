@@ -6,6 +6,8 @@ import EditProduct from '../components/EditProduct';
 import Login from '../components/Login/Login';
 import GadgetStore from '../components/GadgetStore';
 import ViewCart from '../components/ViewCart';
+import ReduxGadgetStore from '../components/ReduxGadgetStore';
+import ReduxViewCart from '../components/ReduxViewCart';
 
 type Route={
 
@@ -61,6 +63,18 @@ export const routes: Route[] = [
         path: "/cart",
         component: ViewCart,
         title: "View Cart",
+        isOnMainMenu: true
+    },
+    {
+        path: "/reduxgadgets",
+        component: ReduxGadgetStore,
+        title: "ReduxGadgets",
+        isOnMainMenu: true
+    },
+    {
+        path: "/reduxcart",
+        component: ReduxViewCart,
+        title: "Redux View Cart",
         isOnMainMenu: true
     },
 
