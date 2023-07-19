@@ -1,4 +1,4 @@
-import {JSX} from 'react';
+import {Component, JSX} from 'react';
 import Hello from '../components/Hello';
 import Counter from '../components/Counter';
 import ListProducts from '../components/ListProducts';
@@ -8,11 +8,14 @@ import GadgetStore from '../components/GadgetStore';
 import ViewCart from '../components/ViewCart';
 import ReduxGadgetStore from '../components/ReduxGadgetStore';
 import ReduxViewCart from '../components/ReduxViewCart';
+import RxjsGadgetStore from '../components/RxjsGadgetStore';
+import RxjsViewCart from '../components/RxjsViewCart';
+import ListCustomers from '../components/ListCustomers';
 
 type Route={
 
     path: string,
-    component: (props: any)=> JSX.Element | any,
+    component:    any,
     title?: string,
     isSecure?: boolean,
     props?: any,
@@ -76,6 +79,25 @@ export const routes: Route[] = [
         component: ReduxViewCart,
         title: "Redux View Cart",
         isOnMainMenu: true
+    },
+    {
+        path: "/rxjsgadgets",
+        component: RxjsGadgetStore,
+        title: "RxjsGadgets",
+        isOnMainMenu: true
+    },
+    {
+        path: "/rxjscart",
+        component: RxjsViewCart,
+        title: "Rxjs View Cart",
+        isOnMainMenu: true
+    },
+    {
+        path: "/customers",
+        component: ListCustomers,
+        title: "Customers",
+        isOnMainMenu: true,
+        props: {message: "This is a class component"}
     },
 
 ]
