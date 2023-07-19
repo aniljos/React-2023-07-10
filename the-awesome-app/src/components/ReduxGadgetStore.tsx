@@ -6,16 +6,19 @@ import {useDispatch, useSelector} from 'react-redux';
 import { AppDispatch, AppState } from "../redux/store";
 import { CartItem } from "../models/CartItem";
 import { createAddToCartAction, createUpdateProductsAction } from "../redux/actionsCreators";
+import {ThunkDispatch} from 'redux-thunk';
+import { GadgetAction } from "../redux/gadgetsReducer";
 
 export default function ReduxGadgetStore() : JSX.Element {
 
     //const [products] = useAxiosGetProducts(); //useState<Product[]>([]);
     const dispatch = useDispatch<AppDispatch>();
+    const thunkDispatch = useDispatch<ThunkDispatch<AppState,void, GadgetAction >>()
     const products = useSelector<AppState>(state => state.gadgets.products) as Product[];
 
     useEffect(() => {
-        dispatch(createUpdateProductsAction())
-    })
+        thunkDispatch(createUpdateProductsAction())
+    }, [])
 
    function addToCart(item: Product){
 
