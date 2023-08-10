@@ -5,6 +5,9 @@ import "./ListProducts.css";
 import { useNavigate } from 'react-router-dom';
 import ProductView from "./ProductView";
 import { useTitle } from "../hooks/useTitle";
+import {useSelector} from 'react-redux'
+import { AppState } from "../redux/store";
+import { AuthState } from "../redux/authReducer";
 
 const baseUrl = "http://localhost:9000";
 
@@ -13,6 +16,7 @@ function ListProducts(): JSX.Element {
   const [isMessageVisible, setMessageVisible] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
+  const auth:any = useSelector<AppState>(state => state.auth );
   useTitle("ListProducts");
   
 
@@ -36,7 +40,10 @@ function ListProducts(): JSX.Element {
   // }, [products])
 
   function fetchProducts() {
-    axios.get<Product[]>(baseUrl + "/products")
+
+    //Authorization : "Bearer {actual token}"
+    const headers = {"Authorization": `Bearer ${auth.accessToken}`};
+    axios.get<Product[]>(baseUrl + "/secure_products", {headers: headers})
       .then(
       function (resp) {
         console.log("success", resp);

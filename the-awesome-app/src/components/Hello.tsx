@@ -1,6 +1,7 @@
 import {JSX, useState} from 'react';
 //import Message from './Message'; //default import 
 import {Message} from './Message'; // named import
+import withBorder from '../hoc/withBorder';
 
 // const result = useState(false);
 // console.log("result", result);
@@ -40,5 +41,5 @@ function Hello() : JSX.Element{
 
 }
 
-
-export default Hello;
+//export default Hello;
+export default withBorder(Hello);

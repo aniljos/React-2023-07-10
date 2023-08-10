@@ -1,12 +1,13 @@
 import React, {ChangeEvent, JSX, useState, useRef, useEffect} from 'react';
 import { useTitle } from '../hooks/useTitle';
+import withBorder from '../hoc/withBorder';
 
 type CounterProps = {
     initValue: number;
 }
 
 // <Counter initValue={0}/>
-export default function Counter(props: CounterProps): JSX.Element{
+function Counter(props: CounterProps): JSX.Element{
 
     let {initValue} = props;
     const [counter, setCounter] = useState(initValue);
@@ -63,3 +64,5 @@ export default function Counter(props: CounterProps): JSX.Element{
     );
 }
 
+
+export default withBorder(Counter);
