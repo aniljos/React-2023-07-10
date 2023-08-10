@@ -6,16 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { reduxStore } from './redux/store'
 import { AppStoreContext, initialState } from './context/AppStoreContext';
+import './axios/interceptor';
+import AppErrorBoundary from './error-boundary/AppErrorBoundary';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement);
 root.render(
   // <React.StrictMode>
-    <AppStoreContext.Provider value={initialState}>
-      <Provider store={reduxStore}>
+  <AppStoreContext.Provider value={initialState}>
+    <Provider store={reduxStore}>
+      <AppErrorBoundary>
         <App />
-      </Provider>
-    </AppStoreContext.Provider>
+      </AppErrorBoundary>
+    </Provider>
+  </AppStoreContext.Provider>
   // </React.StrictMode>
 );
 

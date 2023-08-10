@@ -8,6 +8,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { routes } from './routes/routes';
 import ProtectedRoute from './components/ProtectedRoute';
+import AppErrorBoundary from './error-boundary/AppErrorBoundary';
 
 function App() {
   return (
@@ -38,30 +39,32 @@ function App() {
             </ul>
           </div>
         </nav>
-        <section>
-          <Routes>
-            {/* <Route path='/' element={<Hello/>} />
+        <AppErrorBoundary>
+          <section>
+            <Routes>
+              {/* <Route path='/' element={<Hello/>} />
               <Route path='/counter' element={<Counter initValue={5}/>} />
               <Route path='/products' element={<ListProducts/>} /> */}
 
-            {routes.map(item => {
+              {routes.map(item => {
 
-              if (item.isProtected) {
-                return (
-                 
-                    <Route key={item.path} path={item.path} 
-                            element={<ProtectedRoute><item.component {...item.props} /> </ProtectedRoute>} />
-                  
-                )
-              }
-              else {
-                return (
-                  <Route key={item.path} path={item.path} element={<item.component {...item.props} />} />
-                )
-              }
-            })}
-          </Routes>
-        </section>
+                if (item.isProtected) {
+                  return (
+
+                    <Route key={item.path} path={item.path}
+                      element={<ProtectedRoute><item.component {...item.props} /> </ProtectedRoute>} />
+
+                  )
+                }
+                else {
+                  return (
+                    <Route key={item.path} path={item.path} element={<item.component {...item.props} />} />
+                  )
+                }
+              })}
+            </Routes>
+          </section>
+        </AppErrorBoundary>
       </div>
     </Router>
   );

@@ -42,8 +42,9 @@ function ListProducts(): JSX.Element {
   function fetchProducts() {
 
     //Authorization : "Bearer {actual token}"
-    const headers = {"Authorization": `Bearer ${auth.accessToken}`};
-    axios.get<Product[]>(baseUrl + "/secure_products", {headers: headers})
+    //const headers = {"Authorization": `Bearer ${auth.accessToken}`};
+    //axios.get<Product[]>(baseUrl + "/secure_products", {headers: headers})
+    axios.get<Product[]>(baseUrl + "/secure_products")
       .then(
       function (resp) {
         console.log("success", resp);
@@ -58,7 +59,7 @@ function ListProducts(): JSX.Element {
   const deleteProduct = useCallback(async function deleteProduct(product: Product) {
     try {
 
-      const url = baseUrl + "/products/" + product.id;
+      const url = baseUrl + "/secure_products/" + product.id;
       const resp = await axios.delete(url);
       alert("Product deleted");
 

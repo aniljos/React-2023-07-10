@@ -34,10 +34,10 @@ class ListCustomers extends PureComponent<ListCustomersProps, ListCustomersState
 
         try {
             
-            const headers = {Authorization: `Bearer ${this.props.auth.accessToken}`}
+           // const headers = {Authorization: `Bearer ${this.props.auth.accessToken}`}
             const response 
                 = await axios.get<Customer[]>(
-                        process.env.REACT_APP_BASE_URL + "/secure_customers", {headers});
+                        process.env.REACT_APP_BASE_URL + "/secure_customers", {});
             this.setState({
                 customers: response.data
             });

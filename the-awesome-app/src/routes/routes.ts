@@ -11,6 +11,7 @@ import ReduxViewCart from '../components/ReduxViewCart';
 import RxjsGadgetStore from '../components/RxjsGadgetStore';
 import RxjsViewCart from '../components/RxjsViewCart';
 import ListCustomers from '../components/ListCustomers';
+import HelloWithError from '../components/HelloWithError';
 
 type Route={
 
@@ -98,6 +99,12 @@ export const routes: Route[] = [
         title: "Customers",
         isOnMainMenu: true,
         props: {message: "This is a class component"}
+    },
+    {
+        path: "/helloerror",
+        component: HelloWithError,
+        title: "Error Boundaries",
+        isOnMainMenu: true
     },
 
 ]

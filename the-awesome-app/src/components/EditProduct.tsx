@@ -18,7 +18,7 @@ export default function EditProduct(){
 
     async function fetchProduct(){
         try {
-            const resp = await axios.get<Product>("http://localhost:9000/products/" + params.id);
+            const resp = await axios.get<Product>("http://localhost:9000/secure_products/" + params.id);
             setProduct(resp.data);
 
       } catch (error) {
