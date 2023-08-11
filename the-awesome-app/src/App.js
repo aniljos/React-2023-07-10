@@ -8,7 +8,7 @@ import AppErrorBoundary from './error-boundary/AppErrorBoundary';
 
 function App() {
   return (
-    <Router>
+    <Router basename='/'>
       <div className='container-fluid'>
         <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
           <div className="container-fluid">
@@ -48,7 +48,7 @@ function App() {
                   if (item.isProtected) {
                     return (
 
-                      <Route key={item.path} path={item.path}
+                      <Route key={item.path } path={item.path}
                         element={<ProtectedRoute><item.component {...item.props} /> </ProtectedRoute>} />
 
                     )
