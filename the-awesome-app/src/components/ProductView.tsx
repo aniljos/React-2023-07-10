@@ -32,7 +32,7 @@ const ProductView = React.memo((props: ProductViewProps) : JSX.Element => {
     }
 
     return (
-        <div key={product.id} className="product">
+        <div key={product.id} className="product" data-testid="product">
               <p>
                 <img src={baseUrl + product.imageUrl} height={50} width={50} />
               </p>
