@@ -1,17 +1,23 @@
-import {Component, JSX} from 'react';
+import React, {Component, JSX} from 'react';
 import Hello from '../components/Hello';
 import Counter from '../components/Counter';
 import ListProducts from '../components/ListProducts';
 import EditProduct from '../components/EditProduct';
 import Login from '../components/Login/Login';
 import GadgetStore from '../components/GadgetStore';
-import ViewCart from '../components/ViewCart';
+
 import ReduxGadgetStore from '../components/ReduxGadgetStore';
 import ReduxViewCart from '../components/ReduxViewCart';
 import RxjsGadgetStore from '../components/RxjsGadgetStore';
 import RxjsViewCart from '../components/RxjsViewCart';
 import ListCustomers from '../components/ListCustomers';
 import HelloWithError from '../components/HelloWithError';
+
+//static import
+//import ViewCart from '../components/ViewCart';
+
+//dynamic import(creates a seperate bundle)
+const ViewCart = React.lazy(() => import('../components/ViewCart'));
 
 type Route={
 

@@ -57,7 +57,7 @@ function Counter(props: CounterProps): JSX.Element{
 
             <div>
                 {/* Uncontrolled input */}
-                <input type='number' ref={inputRef}/> &nbsp;
+                <input type='number' ref={inputRef} placeholder='UpdateCtr'/> &nbsp;
                 <button onClick={handleUpdate}>Update</button>
             </div>
         </div>
